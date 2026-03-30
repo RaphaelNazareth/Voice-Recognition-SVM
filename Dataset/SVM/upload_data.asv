@@ -1,0 +1,50 @@
+%data upload
+[spp,fs]=audioread('suara 3 PZ.wav');
+figure (1);
+plot (spp);
+plot (spp);title(' Raw Signal ' ); ylabel ('Amplitude (V)'); xlabel ('time(s)');
+spp=spp(:,1);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+spp1=spp(132563 : 214413);
+spp2=spp(214413 : 315627);
+spp3=spp(315627 : 404805);
+spp4=spp(404805 : 499111);
+spp5=spp(499111 : 594306);
+spp6=spp(594306 : 690692);
+spp7=spp(690692 : 769573);
+spp8=spp(769573 : 857651);
+spp9=spp(857651 : 953736);
+spp10=spp(94.5e4: 1035469);
+spp11=spp(103.3770e4:112.25e4);
+spp12=spp(112.25e4:122.25e4);
+spp13=spp(122.52e4:131.118e4);
+spp14=spp(131.118e4:140.570e4);
+spp16=spp(131.184e4:140.0570e4);
+spp17=spp(140.016e4:150.01e4);
+spp18=spp(150.1e4:157.22e4);
+spp19=spp(157e4:166.5e4);
+spp20=spp(166.5e4:174.8e4);
+
+% feature extraction
+%data1=data(:,1);
+% do framing
+%f_d = 0.025;msec
+f_d = 0.025;
+f_size = round(f_d * fs);
+n = length(spp1);
+n_f = floor(n/f_size);  %no. of frames
+temp = 0;
+ i=i+1;
+for i = 1 : n_f
+   
+   frames(i,:) = spp1(temp + 1 : temp + f_size);
+   temp = temp + f_size;
+   
+   preemph = [1 -0.95];
+   x1(i,:) = filter(preemph, 1, frames(i,:));
+   y=hamming(length(frames));
+   fr_win(i,:) = x1 (i,:).* y';
+   c(i,:)=v_melcepst(fr_win(i,:),fs);
+    
+  %save spp1mel(i).txt c(i,:) -ascii
+end
