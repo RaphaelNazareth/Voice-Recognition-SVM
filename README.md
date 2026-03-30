@@ -1,6 +1,8 @@
 # 🎙️ Voice Recognition System  
 ### Speaker Identification using MFCC + SVM (MATLAB)
 
+<img width="1408" height="768" alt="Gemini_Generated_Image_zc51w4zc51w4zc51" src="https://github.com/user-attachments/assets/126ac2b8-ebb4-42ef-afde-8adb5f2d3760" />
+
 ---
 
 ## 📌 Overview
